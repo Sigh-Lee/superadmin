@@ -1,0 +1,24 @@
+
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+require("dotenv").config();
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+// DB connection
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.error("DB error:", err));
+
+// Routes
+app.use("/api/superadmin", require("./routes/superadmin"));
+app.use("/api/mentor", require("./routes/mentor"));
+app.use("/api/client", require("./routes/client"));
+
+app.get("/", (req, res) => res.send("RMC X-PERT Backend is running ✅"));
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
