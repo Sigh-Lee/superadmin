@@ -1,10 +1,9 @@
-
 {
   "name": "superadmin-frontend",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",     // ✅ THIS LINE IS MISSING
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -16,4 +15,3 @@
     "vite": "^4.0.0"
   }
 }
-
